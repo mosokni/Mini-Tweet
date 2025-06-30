@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Page settings -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MiniTweet - SPA</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <main class="container">
+    <!-- Page header -->
+    <header class="main-header">
+      <h1>MiniTweet</h1>
+      <p class="tagline">Share your thoughts </p>
+    </header>
+
+    <!-- Login and Register section -->
+    <section id="auth" class="auth-section">
+      <!-- Register form -->
+      <form id="register-form" class="auth-form" autocomplete="off" novalidate>
+        <h2>Create an Account</h2>
+        <div class="form-group">
+          <label for="reg-username">Username</label>
+          <input
+            type="text"
+            id="reg-username"
+            name="reg-username"
+            placeholder="Enter username"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="reg-password">Password</label>
+          <input
+            type="password"
+            id="reg-password"
+            name="reg-password"
+            placeholder="Create password"
+            required
+            minlength="6"
+          />
+        </div>
+        <button type="button" id="register-btn" class="btn btn-primary">
+          Register
+        </button>
+      </form>
+
+      <!-- Login form -->
+      <form id="login-form" class="auth-form" autocomplete="off" novalidate>
+        <h2>Sign In</h2>
+        <div class="form-group">
+          <label for="login-username">Username</label>
+          <input
+            type="text"
+            id="login-username"
+            name="login-username"
+            placeholder="Your username"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input
+            type="password"
+            id="login-password"
+            name="login-password"
+            placeholder="Your password"
+            required
+          />
+        </div>
+        <button type="button" id="login-btn" class="btn btn-primary">
+          Login
+        </button>
+      </form>
+    </section>
+
+    <!-- Main app (after login) -->
+    <section id="app" class="app-section" hidden>
+      <!-- User welcome and logout -->
+      <header class="user-header">
+        <h2>
+          Welcome back, <span id="user-display" class="username"></span>
+        </h2>
+        <button id="logout-btn" class="btn btn-secondary">Logout</button>
+      </header>
+
+      <!-- App buttons -->
+      <div class="action-buttons">
+        <button id="btn-post" class="btn btn-primary">Post</button>
+        <button id="btn-search" class="btn btn-secondary">Search</button>
+        <button id="btn-follow" class="btn btn-primary">Follow</button>
+        <button id="btn-view-posts" class="btn btn-secondary">View Posts</button>
+      </div>
+
+      <!-- New tweet form -->
+      <form id="tweet-form" class="tweet-form">
+        <div class="form-group">
+          <label for="tweet-text" class="sr-only">Compose Tweet</label>
+          <textarea
+            id="tweet-text"
+            name="tweet-text"
+            placeholder="What's happening?"
+            maxlength="280"
+            required
+          ></textarea>
+          <div id="char-counter" class="char-counter">
+            280 characters remaining
+          </div>
+        </div>
+        <button type="button" id="post-tweet-btn" class="btn btn-primary">
+          Post Tweet
+        </button>
+      </form>
+
+      <!-- Feed section -->
+      <section id="tweets-feed" class="tweets-feed">
+        <h3>Your Feed</h3>
+        <div id="tweets" class="tweets-container" aria-live="polite"></div>
+      </section>
+    </section>
+  </main>
+
+  <!-- Search popup -->
+  <div id="search-modal" class="modal hidden">
+    <div class="modal-overlay" id="search-overlay"></div>
+    <div class="modal-content">
+      <h2>Search for username</h2>
+      <input type="text" id="search-input" placeholder="Type a username..." />
+      <div class="modal-actions">
+        <button class="btn btn-secondary" id="cancel-search-btn">Cancel</button>
+        <button class="btn btn-primary" id="search-submit-btn">Search</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Follow popup -->
+  <div id="follow-modal" class="modal hidden">
+    <div class="modal-overlay" id="follow-overlay"></div>
+    <div class="modal-content">
+      <h2>Enter username to follow</h2>
+      <input type="text" id="follow-input" placeholder="Type a username..." />
+      <div class="modal-actions">
+        <button class="btn btn-secondary" id="cancel-follow-btn">Cancel</button>
+        <button class="btn btn-primary" id="follow-submit-btn">Follow</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript file -->
+  <script src="script.js" defer></script>
+</body>
+</html>
